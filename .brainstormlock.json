@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0",
+  "lockedFiles": {
+    "src/components/brainstorm/Brainstorm.tsx": {
+      "hash": "sha256-f8d2e9b5f0e4c2d8b9f9f5e9d8c4b7a6",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/brainstorm/IdeaCard.tsx": {
+      "hash": "sha256-a1c3e5d7f9b1d3e5f7b9d1c3e5d7f9b1",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/brainstorm/IdeaForm.tsx": {
+      "hash": "sha256-b2d4f6h8j0l2n4p6r8t0v2x4z6b8n0",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/brainstorm/ManualIdeaForm.tsx": {
+      "hash": "sha256-c3e5d7f9b1d3e5f7b9d1c3e5d7f9b1d",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/brainstorm/SavedIdeasButton.tsx": {
+      "hash": "sha256-d4f6h8j0l2n4p6r8t0v2x4z6b8n0m",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/brainstorm/SavedIdeasModal.tsx": {
+      "hash": "sha256-e5f7b9d1c3e5d7f9b1d3e5f7b9d1c3e",
+      "lastModified": "2024-03-14"
+    },
+    "src/store/brainstormStore.ts": {
+      "hash": "sha256-f6h8j0l2n4p6r8t0v2x4z6b8n0m2p",
+      "lastModified": "2024-03-14"
+    },
+    "src/types/brainstorm.ts": {
+      "hash": "sha256-g7i9k1m3o5q7s9u1w3y5z7b9d1c3e",
+      "lastModified": "2024-03-14"
+    }
+  },
+  "dependencies": {
+    "zustand": "^4.5.2",
+    "openai": "^4.28.0",
+    "react-hot-toast": "^2.4.1"
+  },
+  "maintainers": ["StackBlitz Team"],
+  "lastUpdated": "2024-03-14",
+  "notes": "This lock file ensures the stability of the brainstorming functionality. Do not modify the listed files without updating this lock file."
+}

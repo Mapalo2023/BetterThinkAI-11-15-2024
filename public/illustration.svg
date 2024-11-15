@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="800px" viewBox="0 0 800 800" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="gradient">
+            <stop stop-color="#3B82F6" offset="0%"/>
+            <stop stop-color="#8B5CF6" offset="100%"/>
+        </linearGradient>
+    </defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle fill="url(#gradient)" opacity="0.1" cx="400" cy="400" r="400"/>
+        <path d="M400,100 C223.857625,100 80,243.857625 80,420 C80,596.142375 223.857625,740 400,740 C576.142375,740 720,596.142375 720,420" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M400,180 C268.497355,180 162,286.497355 162,418 C162,549.502645 268.497355,656 400,656 C531.502645,656 638,549.502645 638,418" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round"/>
+        <circle fill="url(#gradient)" cx="400" cy="400" r="8"/>
+        <circle fill="url(#gradient)" cx="400" cy="300" r="4"/>
+        <circle fill="url(#gradient)" cx="500" cy="400" r="4"/>
+        <circle fill="url(#gradient)" cx="400" cy="500" r="4"/>
+        <circle fill="url(#gradient)" cx="300" cy="400" r="4"/>
+    </g>
+</svg>

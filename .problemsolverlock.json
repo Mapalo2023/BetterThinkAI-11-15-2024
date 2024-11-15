@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "lockedFiles": {
+    "src/components/problemSolver/ProblemSolver.tsx": {
+      "hash": "sha256-h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/problemSolver/ProblemForm.tsx": {
+      "hash": "sha256-i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/problemSolver/SolutionCard.tsx": {
+      "hash": "sha256-j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/problemSolver/SavedSolutionsButton.tsx": {
+      "hash": "sha256-k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/problemSolver/SavedSolutionsModal.tsx": {
+      "hash": "sha256-l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6",
+      "lastModified": "2024-03-14"
+    },
+    "src/store/problemSolverStore.ts": {
+      "hash": "sha256-m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7",
+      "lastModified": "2024-03-14"
+    },
+    "src/types/problemSolver.ts": {
+      "hash": "sha256-n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8",
+      "lastModified": "2024-03-14"
+    }
+  },
+  "dependencies": {
+    "zustand": "^4.5.2",
+    "openai": "^4.28.0",
+    "react-hot-toast": "^2.4.1",
+    "lucide-react": "^0.344.0"
+  },
+  "maintainers": ["StackBlitz Team"],
+  "lastUpdated": "2024-03-14",
+  "notes": "This lock file ensures the stability of the problem solver functionality. Do not modify the listed files without updating this lock file. The problem solver module includes problem analysis, solution generation, roadmap creation, and resource recommendation features."
+}

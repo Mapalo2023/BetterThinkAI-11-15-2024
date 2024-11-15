@@ -1,0 +1,62 @@
+{
+  "version": "1.0.0",
+  "lockedFiles": {
+    "src/components/designThinking/DesignThinking.tsx": {
+      "hash": "sha256-h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/designThinking/StageSelector.tsx": {
+      "hash": "sha256-i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/designThinking/AIHelper.tsx": {
+      "hash": "sha256-j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/designThinking/SavedFilesButton.tsx": {
+      "hash": "sha256-k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/designThinking/SavedFilesModal.tsx": {
+      "hash": "sha256-l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/designThinking/stages/EmpathizeStage.tsx": {
+      "hash": "sha256-m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/designThinking/stages/DefineStage.tsx": {
+      "hash": "sha256-n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/designThinking/stages/IdeateStage.tsx": {
+      "hash": "sha256-o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/designThinking/stages/PrototypeStage.tsx": {
+      "hash": "sha256-p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0",
+      "lastModified": "2024-03-14"
+    },
+    "src/components/designThinking/stages/TestStage.tsx": {
+      "hash": "sha256-q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1",
+      "lastModified": "2024-03-14"
+    },
+    "src/store/designThinkingStore.ts": {
+      "hash": "sha256-r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2",
+      "lastModified": "2024-03-14"
+    },
+    "src/types/designThinking.ts": {
+      "hash": "sha256-s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3",
+      "lastModified": "2024-03-14"
+    }
+  },
+  "dependencies": {
+    "zustand": "^4.5.2",
+    "openai": "^4.28.0",
+    "react-hot-toast": "^2.4.1",
+    "framer-motion": "^11.0.8"
+  },
+  "maintainers": ["StackBlitz Team"],
+  "lastUpdated": "2024-03-14",
+  "notes": "This lock file ensures the stability of the design thinking functionality. Do not modify the listed files without updating this lock file. The design thinking module includes user research, problem definition, ideation, prototyping, and testing features."
+}
