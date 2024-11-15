@@ -1,78 +1,78 @@
-import React from 'react';
-import { TrendReport } from '../../../types/trendTracker';
-import { Download, FileText } from 'lucide-react';
+import React, { useState } from 'react';
+import { FileText } from 'lucide-react';
+import { fetchData } from '../../../lib/dataFetcher'; // Corrected path
+import Chart from 'chart.js/auto';
 
-interface ReportGeneratorProps {
-  report: TrendReport;
-}
+export default function ReportGenerator() {
+  const reportOptions = [
+    'Trending Topics', 'Sentiment Analysis', 'Top Influencers',
+    'Platform Overview', 'Content Performance', 'Competitor Insights',
+    'Geographic Distribution', 'Keyword Analysis'
+  ];
 
-export default function ReportGenerator({ report }: ReportGeneratorProps) {
-  const generatePDF = () => {
-    // In a real implementation, this would generate a PDF report
-    const data = JSON.stringify(report, null, 2);
-    const blob = new Blob([data], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `trend-report-${report.createdAt.toISOString().split('T')[0]}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+
+  const handleOptionSelect = (option: string) => {
+    if (selectedOptions.includes(option)) {
+      setSelectedOptions(prev => prev.filter(o => o !== option));
+    } else {
+      setSelectedOptions(prev => [...prev, option]);
+    }
+  };
+
+  const generateReport = async () => {
+    const data = await fetchData(selectedOptions);
+    data.forEach((dataset: any, index: number) => {
+      const ctx = document.getElementById(`chart-${index}`) as HTMLCanvasElement;
+      new Chart(ctx, {
+        type: 'bar',
+        data: dataset,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: selectedOptions[index]
+            }
+          }
+        }
+      });
+    });
   };
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h3 className="text-lg font-semibold">Report Summary</h3>
-          <p className="text-sm text-gray-500">
-            Generated on {report.createdAt.toLocaleDateString()}
-          </p>
-        </div>
-        <button
-          onClick={generatePDF}
-          className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors"
-        >
-          <Download className="w-5 h-5" />
-          Export Report
+    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="text-lg font-semibold">Custom Report Generator</h3>
+        <button className="btn btn-primary" onClick={generateReport}>
+          <FileText className="w-4 h-4" />
+          Generate Report
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <h4 className="font-medium mb-3 flex items-center gap-2">
-            <FileText className="w-5 h-5 text-blue-500" />
-            Key Insights
-          </h4>
-          <ul className="space-y-2">
-            {report.insights.map((insight, index) => (
-              <li 
-                key={index}
-                className="p-3 bg-gray-50 rounded-lg text-gray-700 text-sm"
-              >
-                {insight}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {reportOptions.map((option) => (
+          <label
+            key={option}
+            className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer"
+          >
+            <input 
+              type="checkbox" 
+              className="form-checkbox" 
+              onChange={() => handleOptionSelect(option)}
+            />
+            <span className="text-sm">{option}</span>
+          </label>
+        ))}
+      </div>
 
-        <div>
-          <h4 className="font-medium mb-3 flex items-center gap-2">
-            <FileText className="w-5 h-5 text-purple-500" />
-            Recommendations
-          </h4>
-          <ul className="space-y-2">
-            {report.recommendations.map((recommendation, index) => (
-              <li 
-                key={index}
-                className="p-3 bg-purple-50 rounded-lg text-gray-700 text-sm"
-              >
-                {recommendation}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div id="charts">
+        {selectedOptions.map((option, index) => (
+          <canvas id={`chart-${index}`} key={index}></canvas>
+        ))}
       </div>
     </div>
   );
