@@ -2,6 +2,9 @@ import React from 'react';
 import { Check, Zap } from 'lucide-react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY || '');
 
 export default function Pricing() {
   const plans = [
@@ -17,7 +20,8 @@ export default function Pricing() {
         'Single user'
       ],
       buttonText: 'Get Started',
-      popular: false
+      popular: false,
+      priceId: 'price_1FreePlan' // Replace with actual price ID from Stripe
     },
     {
       name: 'Pro',
@@ -33,7 +37,8 @@ export default function Pricing() {
         'API access'
       ],
       buttonText: 'Start Free Trial',
-      popular: true
+      popular: true,
+      priceId: 'price_1ProPlan' // Replace with actual price ID from Stripe
     },
     {
       name: 'Enterprise',
@@ -52,6 +57,24 @@ export default function Pricing() {
       popular: false
     }
   ];
+
+  const handleCheckout = async (priceId: string) => {
+    const stripe = await stripePromise;
+    if (!stripe) {
+      console.error('Stripe failed to load.');
+      return;
+    }
+    const { error } = await stripe.redirectToCheckout({
+      lineItems: [{ price: priceId, quantity: 1 }],
+      mode: 'subscription',
+      successUrl: window.location.origin + '/success',
+      cancelUrl: window.location.origin + '/cancel',
+    });
+
+    if (error) {
+      console.error('Stripe checkout error:', error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#0A0D14]">
@@ -98,14 +121,30 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <button className={`w-full py-3 rounded-lg flex items-center justify-center gap-2 font-medium transition-colors ${
-                plan.popular
-                  ? 'bg-blue-600 text-white hover:bg-blue-700'
-                  : 'bg-gray-700 text-white hover:bg-gray-600'
-              }`}>
-                <Zap className="w-5 h-5" />
-                {plan.buttonText}
-              </button>
+              {plan.priceId ? (
+                <button
+                  onClick={() => handleCheckout(plan.priceId)}
+                  className={`w-full py-3 rounded-lg flex items-center justify-center gap-2 font-medium transition-colors ${
+                    plan.popular
+                      ? 'bg-blue-600 text-white hover:bg-blue-700'
+                      : 'bg-gray-700 text-white hover:bg-gray-600'
+                  }`}
+                >
+                  <Zap className="w-5 h-5" />
+                  {plan.buttonText}
+                </button>
+              ) : (
+                <button
+                  className={`w-full py-3 rounded-lg flex items-center justify-center gap-2 font-medium transition-colors ${
+                    plan.popular
+                      ? 'bg-blue-600 text-white hover:bg-blue-700'
+                      : 'bg-gray-700 text-white hover:bg-gray-600'
+                  }`}
+                >
+                  <Zap className="w-5 h-5" />
+                  {plan.buttonText}
+                </button>
+              )}
             </div>
           ))}
         </div>
